@@ -1,0 +1,6 @@
+# Student submission notes
+
+Submitted by: Taofeek Ayomide Remilekun
+Student ID: Ug/22/5894
+
+This Week 1 submission keeps the same functionality while using a slightly different coding style.
