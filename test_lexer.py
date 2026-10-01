@@ -47,4 +47,4 @@ def test_string_and_comment():
 if __name__ == '__main__':
     test_basic()
     test_string_and_comment()
-    print('All lexer tests passed for Taofeek Ayomide Remilekun')
+    print('All lexer tests passed')
