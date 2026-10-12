@@ -44,8 +44,8 @@ class Token:
 class Lexer:
     def __init__(self, input_text: str):
         self.input = input_text
-        self.position = 0       # current pos in input (points to current char)
-        self.read_position = 0  # current reading position in input (after current char)
+        self.position = 0
+        self.read_position = 0
         self.ch: Optional[str] = None
         self._read_char()
 
@@ -79,19 +79,16 @@ class Lexer:
         return self.input[start:self.position]
 
     def _read_string(self) -> str:
-        # consume opening quote
         self._read_char()
         value_chars: List[str] = []
         while self.ch is not None and self.ch != '"':
             if self.ch == '\\' and self._peek_char() in ('"', '\\'):
-                # handle simple escapes: \" and \\
                 self._read_char()
                 value_chars.append(self.ch)
                 self._read_char()
                 continue
             value_chars.append(self.ch)
             self._read_char()
-        # consume closing quote
         if self.ch == '"':
             self._read_char()
         return ''.join(value_chars)
@@ -102,9 +99,7 @@ class Lexer:
         if self.ch is None:
             return Token(TokenType.EOF, "")
 
-        # comments
         if self.ch == '/' and self._peek_char() == '/':
-            # consume both slashes
             self._read_char()
             self._read_char()
             while self.ch is not None and self.ch != '\n':
@@ -157,4 +152,3 @@ if __name__ == "__main__":
             break
     for t in toks:
         print(t)
-
